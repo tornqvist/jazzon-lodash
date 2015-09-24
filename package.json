@@ -1,0 +1,33 @@
+{
+  "name": "jazzon-lodash",
+  "version": "0.1.0",
+  "description": "Use some lodash goodness with jazzon",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tornqvist/jazzon-lodash.git"
+  },
+  "keywords": [
+    "jazzon",
+    "lodash",
+    "json",
+    "utility"
+  ],
+  "author": "Carl Törnqvist <calle.tornqvist@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tornqvist/jazzon-lodash/issues"
+  },
+  "homepage": "https://github.com/tornqvist/jazzon-lodash#readme",
+  "devDependencies": {
+    "eslint": "^1.5.1",
+    "jazzon": "^0.2.0",
+    "tape": "^4.2.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
