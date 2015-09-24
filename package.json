@@ -1,6 +1,6 @@
 {
   "name": "jazzon-lodash",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use some lodash goodness with jazzon",
   "main": "index.js",
   "scripts": {
