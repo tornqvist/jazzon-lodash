@@ -98,7 +98,7 @@ module.exports = function (options) {
        * Helpers that expects a value and possible arguments
        */
 
-      args = format(args);
+      args = (format(args) || []);
       args.unshift(value);
 
       return lodash[helper].apply(lodash, args);
