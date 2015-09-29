@@ -1,14 +1,28 @@
 'use strict';
 
-let lodash = require('lodash');
+const lodash = require('lodash');
 
 module.exports = function (options) {
-  return function (value, helper, args) {
+  options = (options || {});
+
+  let prefix;
+
+  if (options.prefix) {
+    prefix = new RegExp(`^(?:${ lodash.escapeRegExp(options.prefix) })`);
+  } else {
+    prefix = /^(?:(?:(?:[lodash]+)|_)\.)?/;
+  }
+
+  return function (state, helper, args) {
     /**
      * Remove any leading lodash. or _. from helper name
      */
 
-    helper = helper.replace(/^(?:(?:[lodash]+)|_)\./, '');
+    if (!prefix.test(helper)) {
+      return state;
+    }
+
+    helper = helper.replace(prefix, '');
 
     switch (helper) {
     case 'chunk':
@@ -99,7 +113,7 @@ module.exports = function (options) {
        */
 
       args = (format(args) || []);
-      args.unshift(value);
+      args.unshift(state);
 
       return lodash[helper].apply(lodash, args);
     case 'difference':
@@ -113,15 +127,15 @@ module.exports = function (options) {
        * Helpers that expect a number of arguments to operate on
        */
 
-      return lodash[helper].apply(lodash, value);
+      return lodash[helper].apply(lodash, state);
     case 'template':
       /**
        * Custom support for template
        */
 
-      return lodash.template(args[0])(value);
+      return lodash.template(args[0])(state);
     default:
-      return value;
+      return state;
     }
   };
 };

@@ -96,7 +96,7 @@ The following lodash methods are availible and support passing arguments to (whe
 - `words`
 - `uniqueId`
 
-The following lodash methods operate solely on the current value passed into the helper. Most of them expect an array:
+The following lodash methods operate solely on the current state passed into the helper. Most of them expect an array:
 
 - `difference`
 - `intersection`
@@ -106,7 +106,7 @@ The following lodash methods operate solely on the current value passed into the
 - `zipObject`
 - `merge`
 
-The template method is also supported. The template string passed in as an argument get's rendered using the current value (passed from previous helper):
+The template method is also supported. The template string passed in as an argument is rendered using the current state (passed from previous helper):
 
 - `template`
 
@@ -116,4 +116,12 @@ To avoid conflict with other helpers one can prefix all the methods with "lodash
 
 ```
 pick === _.pick === lodash.pick
+```
+
+One can also force a custom prefix using the `prefix` option.
+
+```
+jazzon.use(require('jazzon-lodash')({ prefix: 'foo.' }));
+
+jazzon.compile({ index: '@{ foo.random }' });
 ```
