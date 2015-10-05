@@ -113,7 +113,10 @@ module.exports = function (options) {
        */
 
       args = (format(args) || []);
-      args.unshift(state);
+
+      if (state !== null) {
+        args.unshift(state);
+      }
 
       return lodash[helper].apply(lodash, args);
     case 'difference':
